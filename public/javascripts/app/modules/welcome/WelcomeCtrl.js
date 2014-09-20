@@ -14,11 +14,13 @@
 
     WelcomeCtrl.prototype.submit = function() {
         var _this = this;
-        _this.username = _this.$localStorage.$default({
-            username: _this.nickname
+        _this.$localStorage.$default({
+            user: {
+             nickname: _this.nickname,
+             id: _.uniqueId('id_')
+            }
         });
         _this.$state.go('home');
-        _this.mySocket.emit('add user', _this.nickname);
     };
 
     WelcomeCtrl.$inject = ['$state', '$localStorage', 'mySocket'];

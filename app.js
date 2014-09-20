@@ -71,11 +71,12 @@ io.on('connection', function (socket) {
     });
 
     // when the client emits 'add user', this listens and executes
-    socket.on('add user', function (username) {
+    socket.on('add user', function (user) {
         // we store user in socket session
-        socket.username = username;
+        console.log('user', user);
+        socket.user = user;
 
-        usernames[username] = username;
+        usernames[user.id] = user;
         numUsers = numUsers + 1;
         console.log('usernames', usernames);
         console.log('numUsers', numUsers);
@@ -93,11 +94,12 @@ io.on('connection', function (socket) {
 
     // when user disconnects
     socket.on('disconnect', function () {
-        delete usernames[socket.username];
+        console.log('asss', socket.user);
+        delete usernames[socket.user.id];
         --numUsers;
 
         socket.broadcast.emit('user left', {
-            username: socket.username,
+            user: socket.user,
             numUsers: numUsers
         });
     });

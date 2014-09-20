@@ -5,9 +5,11 @@ html(ng-app='app')
     link(rel='stylesheet', href='/stylesheets/style.css')
 body
     <div ui-view></div>
+
     <div ui-view="chat"></div>
     <div ui-view="search"></div>
     <div ui-view="playlist"></div>
+    <div ui-view="online"></div>
 
     script(src="/javascripts/vendor/jquery.js")
     script(src="/javascripts/vendor/socket.io.js")
@@ -15,6 +17,7 @@ body
     script(src="/javascripts/vendor/angular-ui-router.js")
     script(src="/javascripts/vendor/angular-socket-io.js")
     script(src="/javascripts/vendor/ngStorage.js")
+    script(src="/javascripts/vendor/underscore.js")
 
     script(src="/javascripts/app/app.js")
 
@@ -27,6 +30,8 @@ body
     script(src="/javascripts/app/modules/chat/ChatCtrl.js")
 
     script(src="/javascripts/app/modules/welcome/WelcomeCtrl.js")
+
+    script(src="/javascripts/app/modules/online/OnlineCtrl.js")
 
 
 

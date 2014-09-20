@@ -17,6 +17,11 @@
                     },
                     'playlist': {
                         templateUrl: appConfig.templates.playlist
+                    },
+                    'online': {
+                        templateUrl: appConfig.templates.online,
+                        controller: 'OnlineCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
             })

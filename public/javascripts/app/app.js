@@ -8,7 +8,8 @@
 
         'app.configuration',
         'app.chat',
-        'app.welcome'
+        'app.welcome',
+        'app.online'
     ]);
 
     app.factory('mySocket', function (socketFactory) {
@@ -17,6 +18,7 @@
 
     angular.module('app.chat', []);
     angular.module('app.welcome', []);
+    angular.module('app.online', []);
 
 }());
 
