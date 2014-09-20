@@ -67,10 +67,7 @@ var numUsers = 0;
 io.on('connection', function (socket) {
     // when the client emits 'new message' this listens and executes
     socket.on('new message', function (data) {
-        socket.broadcast.emit('new message', {
-            username: socket.username,
-            message: data
-        }) ;
+        socket.broadcast.emit('new message', data) ;
     });
 
     // when the client emits 'add user', this listens and executes

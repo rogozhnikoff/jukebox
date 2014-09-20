@@ -1,10 +1,32 @@
 doctype html
-html
+html(ng-app='app')
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+body
+    <div ui-view></div>
+    <div ui-view="chat"></div>
+    <div ui-view="search"></div>
+    <div ui-view="playlist"></div>
+
     script(src="/javascripts/vendor/jquery.js")
     script(src="/javascripts/vendor/socket.io.js")
-    script(src="/javascripts/script.js")
-  body
-    block content
+    script(src="/javascripts/vendor/angular.js")
+    script(src="/javascripts/vendor/angular-ui-router.js")
+    script(src="/javascripts/vendor/angular-socket-io.js")
+    script(src="/javascripts/vendor/ngStorage.js")
+
+    script(src="/javascripts/app/app.js")
+
+    script(src="/javascripts/app/config/appConfig.js")
+    script(src="/javascripts/app/config/RoutesConfig.js")
+    script(src="/javascripts/app/config/StateChangeConfig.js")
+
+    scropt(src="/javascripts/app/common/services/mySocket.js")
+
+    script(src="/javascripts/app/modules/chat/ChatCtrl.js")
+
+    script(src="/javascripts/app/modules/welcome/WelcomeCtrl.js")
+
+
+
