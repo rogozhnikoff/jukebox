@@ -1,12 +1,9 @@
 'use strict';
 
 (function() {
-    var OnlineCtrl = function(
-        mySocket,
-        $localStorage
-        ) {
+    var OnlineCtrl;
+    OnlineCtrl = function (mySocket, $localStorage) {
         var _this = this;
-        window.qqq = _this;
         _this.members = [];
         _this.mySocket = mySocket;
         _this.$localStorage = $localStorage;

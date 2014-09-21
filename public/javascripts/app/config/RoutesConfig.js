@@ -13,10 +13,14 @@
                         controllerAs: 'ctrl'
                     },
                     'search': {
-                        templateUrl: appConfig.templates.search
+                        templateUrl: appConfig.templates.search,
+                        controller: 'SearchCtrl',
+                        controllerAs: 'ctrl'
                     },
                     'playlist': {
-                        templateUrl: appConfig.templates.playlist
+                        templateUrl: appConfig.templates.playlist,
+                        controller: 'PlaylistCtrl',
+                        controllerAs: 'ctrl'
                     },
                     'online': {
                         templateUrl: appConfig.templates.online,

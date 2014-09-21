@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+
+.search__input.ng-invalid-valid-url:focus{
+    border-color: #e9322d;
+    box-shadow: 0 0 6px #f8b9b7;
+}

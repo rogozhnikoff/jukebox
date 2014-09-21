@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 var app = express();
-var server = http.createServer(app).listen(3000);
+var server = http.createServer(app).listen(3001);
 var io = require('socket.io').listen(server);
 
 // view engine setup

@@ -1,1 +1,8 @@
-playlist
+<div class='playlist'>
+    <div class='playlist_title'>Playlist</div>
+    <div class='playlist__list'>
+        <div class='playlist__item' ng-repeat='item in ctrl.PlaylistFactory.items'>
+            {{item.url}}
+        </div>
+    </div>
+</div>

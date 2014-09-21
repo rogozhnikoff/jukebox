@@ -1,1 +1,12 @@
-search
+<div class='search'>
+    <div class='search_title'>Search</div>
+    <form class='search__form' ng-submit='ctrl.submit()' name='form' novalidate>
+        <input class='search__input' type='text' ng-model='ctrl.search.url' required correct-url name='url'>
+    </form>
+
+    <div>=={{form.$invalid}}==</div>
+    <div>=={{form.$error}}==</div>
+    <div>==============================================</div>
+    <div>=={{form.url.$invalid}}==</div>
+    <div>=={{form.url.$error}}==</div>
+</div>

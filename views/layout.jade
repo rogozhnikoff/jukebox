@@ -3,6 +3,7 @@ html(ng-app='app')
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/vendor/bootstrap.css')
 body
     <div ui-view></div>
 
@@ -18,21 +19,35 @@ body
     script(src="/javascripts/vendor/angular-socket-io.js")
     script(src="/javascripts/vendor/ngStorage.js")
     script(src="/javascripts/vendor/lodash.js")
+    script(src="/javascripts/vendor/ui-bootstrap-tpls.js")
 
     script(src="/javascripts/app/app.js")
 
+    // Config
     script(src="/javascripts/app/config/appConfig.js")
     script(src="/javascripts/app/config/UrlsConfig.js")
     script(src="/javascripts/app/config/RoutesConfig.js")
     script(src="/javascripts/app/config/StateChangeConfig.js")
 
-    scropt(src="/javascripts/app/common/services/mySocket.js")
+    // Services
+    script(src="/javascripts/app/common/services/mySocket.js")
+    script(src="/javascripts/app/common/directives/correctUrl.js")
 
+    // Chat
     script(src="/javascripts/app/modules/chat/ChatCtrl.js")
 
+    // Welcome
     script(src="/javascripts/app/modules/welcome/WelcomeCtrl.js")
 
+    // Online
     script(src="/javascripts/app/modules/online/OnlineCtrl.js")
+
+    // Search
+    script(src="/javascripts/app/modules/search/SearchCtrl.js")
+
+    // Playlist
+    script(src="/javascripts/app/modules/playlist/PlaylistFactory.js")
+    script(src="/javascripts/app/modules/playlist/PlaylistCtrl.js")
 
 
 
