@@ -5,7 +5,7 @@
     {
         $stateProvider
             .state('home', {
-                url: '/',
+                url: appConfig.urls.home,
                 views: {
                     'chat': {
                         templateUrl: appConfig.templates.chat,
@@ -26,7 +26,7 @@
                 }
             })
             .state('welcome', {
-                url: '/welcome',
+                url: appConfig.urls.welcome,
                 templateUrl: appConfig.templates.welcome,
                 controller: 'WelcomeCtrl',
                 controllerAs: 'ctrl'
@@ -35,6 +35,10 @@
                 url: '*path',
                 template: '<div>error</div>'
             });
+
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
+
     };
 
     RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', 'appConfig'];

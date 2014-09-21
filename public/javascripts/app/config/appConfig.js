@@ -11,6 +11,10 @@
         },
         api: {
 
+        },
+        urls: {
+            home: '/',
+            welcome: '/welcome/'
         }
     }
 

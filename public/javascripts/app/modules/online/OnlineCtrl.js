@@ -6,6 +6,7 @@
         $localStorage
         ) {
         var _this = this;
+        window.qqq = _this;
         _this.members = [];
         _this.mySocket = mySocket;
         _this.$localStorage = $localStorage;
@@ -20,6 +21,12 @@
         _this.mySocket.on('user joined', function (data) {
             _this.members.push(_this.$localStorage.user);
         });
+
+        _this.mySocket.on('user left', function (data) {
+            _this.members = _.reject(_this.members, function(member){
+                if (member.id == data.user.id) return member;
+            })
+        })
     };
 
     OnlineCtrl.prototype.addUser = function() {

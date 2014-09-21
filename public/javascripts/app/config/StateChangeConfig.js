@@ -1,27 +1,23 @@
 'use strict';
 
 (function (){
-    var StateChangeConfig = function ($rootScope, $state, $localStorage)
+    var StateChangeConfig = function ($rootScope, $state, $localStorage, $location)
     {
-        var kkk = 2;
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            console.log('toState', toState, 'sss', $localStorage);
-            var isRegisteredToHome = ($localStorage.username && toState.name === 'welcome');
-            var notRegisteredToWelcome = (!$localStorage.username && toState.name != 'welcome');
-            console.log('not',  toState.name);
-//            if (isRegisteredToHome){
-//                $state.go('home');
-//                return;
-//            }
-//            if (notRegisteredToWelcome){
-//                console.log('redirect');
-//                $state.go('welcome');
-//                return;
-//            }
+            var isRegisteredToHome = ($localStorage.user && toState.name === 'welcome');
+            var notRegisteredToWelcome = (!$localStorage.user && toState.name === 'home');
+            if (isRegisteredToHome){
+                $location.path('/');
+                return;
+            }
+            if (notRegisteredToWelcome){
+                $location.path('welcome');
+                return;
+            }
         });
     };
 
-    StateChangeConfig.$inject = ['$rootScope', '$state', '$localStorage'];
+    StateChangeConfig.$inject = ['$rootScope', '$state', '$localStorage', '$location'];
 
     var module = angular.module('app');
 

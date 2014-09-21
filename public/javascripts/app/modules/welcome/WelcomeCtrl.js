@@ -17,7 +17,7 @@
         _this.$localStorage.$default({
             user: {
              nickname: _this.nickname,
-             id: _.uniqueId('id_')
+             id: _.random(300000) + Date.now()
             }
         });
         _this.$state.go('home');

@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 var server = http.createServer(app).listen(3000);
@@ -26,7 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -73,7 +71,7 @@ io.on('connection', function (socket) {
     // when the client emits 'add user', this listens and executes
     socket.on('add user', function (user) {
         // we store user in socket session
-        console.log('user', user);
+        console.log('add user', user);
         socket.user = user;
 
         usernames[user.id] = user;
@@ -94,7 +92,9 @@ io.on('connection', function (socket) {
 
     // when user disconnects
     socket.on('disconnect', function () {
-        console.log('asss', socket.user);
+        if (!socket.user) return;
+        console.log('disconnect', socket.user);
+
         delete usernames[socket.user.id];
         --numUsers;
 

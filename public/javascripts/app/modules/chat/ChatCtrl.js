@@ -27,7 +27,7 @@
 
         messageWithUsername = {
             message: _this.message,
-            username: _this.$localStorage.username
+            username: _this.$localStorage.user.nickname
         };
 
         _this.mySocket.emit('new message', messageWithUsername);
