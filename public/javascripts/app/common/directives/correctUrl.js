@@ -9,8 +9,14 @@
             require: 'ngModel',
             link: function (scope, elem, attrs, ngModel) {
 
+                function ytVidId(url) {
+                    var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+                    if (_.isUndefined(url)) return false;
+                    return (url.match(p)) ? RegExp.$1 : false;
+                }
+
                 ngModel.$parsers.unshift(function(value) {
-                    if (value == 'youtube') {
+                    if (ytVidId(value)) {
                         ngModel.$setValidity('validUrl', true);
                         return true;
                     }
@@ -21,7 +27,7 @@
                 });
 
                 ngModel.$formatters.unshift(function(value) {
-                    if (value == 'youtube') {
+                    if (ytVidId(value)) {
                         ngModel.$setValidity('validUrl', true);
                         return true;
                     }

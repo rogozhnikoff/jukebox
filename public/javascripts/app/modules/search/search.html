@@ -1,12 +1,7 @@
 <div class='search'>
     <div class='search_title'>Search</div>
-    <form class='search__form' ng-submit='ctrl.submit()' name='form' novalidate>
+    <form class='search__form' ng-submit='ctrl.submit(form)' name='form' novalidate>
+        <div class='search_error' ng-show='ctrl.showError(form)'>Url isn't youtube url.</div>
         <input class='search__input' type='text' ng-model='ctrl.search.url' required correct-url name='url'>
     </form>
-
-    <div>=={{form.$invalid}}==</div>
-    <div>=={{form.$error}}==</div>
-    <div>==============================================</div>
-    <div>=={{form.url.$invalid}}==</div>
-    <div>=={{form.url.$error}}==</div>
 </div>
