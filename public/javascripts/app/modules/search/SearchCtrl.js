@@ -1,36 +1,41 @@
 'use strict';
 
+String.prototype.cap = function(){
+    return this.slice(0, 1).toUpperCase() + this.slice(1)
+}
+
+// выноси отдельно в файл
+window.registerCtrl = function(name, methods, options){
+    constructor = methods.constructor;
+    var Ctrl = typeof constructor === 'function' ? constructor : $.noop;
+    if (constructor != null) delete methods.constructor;
+    $.extend(Ctrl.prototype, methods)
+    
+    if (options.$inject != null) Ctrl.$inject = options.$inject;
+
+    var module = angular.module('app.' + name);
+
+    module.controller(name.cap() + 'Ctrl', Ctrl);
+}
+
+
 (function() {
-    var SearchCtrl;
-    SearchCtrl = function (PlaylistFactory) {
-        var _this = this;
-        window.fff = this;
-
-        _this.PlaylistFactory = PlaylistFactory;
-    };
-
-    SearchCtrl.prototype.submit = function (form) {
-        var _this = this;
-
-        if (form.$invalid) return;
-
-        console.log('submit', _this.search);
-        _this.PlaylistFactory.items.push(_this.search);
-        _this.search = null;
-        form.$setPristine(true);
-
-    };
-
-    SearchCtrl.prototype.showError = function (form) {
-        if (form.url.$error.validUrl && form.$dirty)
-            return true;
-        else
-            return false;
-    };
-
-    SearchCtrl.$inject = ['PlaylistFactory'];
-
-    var module = angular.module('app.search');
-
-    module.controller('SearchCtrl', SearchCtrl);
+    registerCtrl('search', {
+        constructor: function (PlaylistFactory) {
+            window.fff = this;
+            this.PlaylistFactory = PlaylistFactory;
+        },
+        submit = function (form) {
+            if (form.$invalid) return;
+    
+            this.PlaylistFactory.items.push(this.search);
+            this.search = null;
+            form.$setPristine(true);
+        },
+        showError = function (form) {
+            return form.url.$error.validUrl && form.$dirty
+        }
+    }, {
+        $inject: ['PlaylistFactory']
+    });
 }());
